@@ -155,6 +155,7 @@ ZOO = {
 |--|----|--------|-------|
 |0 | cat |  False | 50.0 |
 |1 | dog |  True  | 30.5  |
+
 [Solution:](./Отборочный/MTS-строки.py)
 ```python
 import numpy as np
