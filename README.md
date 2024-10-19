@@ -251,6 +251,41 @@ def men_stat(df: pd.DataFrame):
     return ages.max(), ages.min(), ages.median(), ages.mean(), ages.var()
 ```
 </details>
+<details>
+<summary><h2>Сводная таблица</h2></summary>
+В этой задаче на вход подаются всем известные данные о погибших/выживших пассажирах на титанике. (Файл `titanik_train.csv` в папке data). 
+
+Сделать сводную таблицу по **максимальному возрасту** для пола и класса. Для примера посмотрите сводную таблицу по сумме выживших, для пола и класса. 
+
+| Sex        | Pclass  | Survived |
+|------------|---------|----------|
+| **female** | **1**   |      91  |
+|            | **2**   |      70  |
+|            | **3**   |      72  |
+| **male**   | **1**   |      45  |
+|            | **2**   |      17  |
+|            | **3**   |      47  |
+
+Обратите внимание, что первые 2 столбца - это не колонки, а `MultiIndex`.
+
+### Sample 1
+#### Input:
+```python
+df = pd.read_csv('data/titanic_train.csv', index_col='PassengerId')
+```
+
+[Solution:](./Отборочный/MTS-строки.py)
+```python
+import pandas as pd
+
+def age_stat(df: pd.DataFrame) -> pd.DataFrame:
+    return df.pivot_table(
+      values='Age',
+      index=['Sex', 'Pclass'],
+      aggfunc='max'
+    )
+```
+</details>
 </details>
 <details>
 <summary><h1>IntroML</h1></summary>
