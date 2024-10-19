@@ -204,6 +204,7 @@ def ZOOtable(zoo: dict) -> pd.DataFrame:
 Формат даты единый, исключений нет, пробелы мужду элементами дат присутствуют, исключений (`Nan`) нету.
 
 P.S. Для обработки высокосных годов используйте модуль `dateutil.relativedelta`.
+
 [Solution:](./Отборочный/MTS-строки.py)
 ```python
 import pandas as pd
