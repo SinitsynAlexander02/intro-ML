@@ -15,7 +15,7 @@ a = 7.2
 ```python
 7
 ```
-[Решение:](./Отборочный/MTS-строки.py)
+[Solution:](./Отборочный/MTS-строки.py)
 ```python
 import numpy as np
 
@@ -35,7 +35,7 @@ A = np.array([43, 66, 34, 55, 78, 105, 2])
 ```python
 array([ 43,   2,  34,  55,  66, 105,  78])
 ```
-[Решение:](./Отборочный/MTS-строки.py)
+[Solution:](./Отборочный/MTS-строки.py)
 ```python
 import numpy as np
 
@@ -73,10 +73,57 @@ array([[[0, 1, 1],
         [0, 0, 1],
         [0, 0, 1]]])
 ```
-[Решение:](./Отборочный/MTS-строки.py)
+[Solution:](./Отборочный/MTS-строки.py)
 ```python
 import numpy as np
 
 def tensor_mask(X: np.ndarray, mask: np.ndarray) -> np.ndarray:
     return np.where(X == mask, 0, 1)
+```
+## Сумма цифр в массиве
+На вход подается `np.ndarray` c натуральными числами. Надо получить массив сумм цифр в этих числах.
+
+### Sample
+#### Input:
+```python
+a = np.array([1241, 354, 121])
+```
+#### Output:
+```python
+array([ 8, 12, 4])
+```
+[Solution:](./Отборочный/MTS-строки.py)
+```python
+def num_sum(a: np.ndarray) -> np.ndarray:
+  digits = np.array(list(''.join(np.char.mod('%d', a)))).astype(int)
+  return np.add.reduceat(digits, np.r_[0, np.char.str_len(np.char.mod('%d', a)).cumsum()[:-1]])
+```
+## Чистка NaN-ов
+Одна из важных проблем данных - пустые значения. В *numpy* и *pandas* они обычно объявляются специальным типом ```np.nan```. В реальных задачах нам часто нужно что-то сделать с этими значениями. Например заменить на 0, среднее или медиану.
+
+Реализуйте функцию, которая во входной вещественной матрице ```X``` находит все значения ```nan``` и заменяет их на **медиану** остальных элементов столбца. Если все элементы столбца матрицы ```nan```, то заполняем столбец нулями.
+
+### Sample
+#### Input:
+```python
+X = np.array([[np.nan,      4,  np.nan],
+              [np.nan, np.nan,       8],
+              [np.nan,      5,  np.nan]])
+```
+#### Output:
+```python
+array([[0. , 4. , 8. ],
+       [0. , 4.5, 8. ],
+       [0. , 5. , 8. ]])
+```
+[Solution:](./Отборочный/MTS-строки.py)
+```python
+import numpy as np
+
+def replace_nans(X: np.ndarray) -> np.ndarray:
+    Y = X.copy()
+    m = np.nanmedian(Y, axis=0)
+    m[np.isnan(m)] = 0
+    Y[np.isnan(Y)] = np.take(m, np.where(np.isnan(Y))[1])
+    return Y
 ```
