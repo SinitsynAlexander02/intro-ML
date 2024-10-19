@@ -184,6 +184,51 @@ def ZOOtable(zoo: dict) -> pd.DataFrame:
   return df.reindex(sorted(df.columns), axis=1)
 ```
 </details>
+<details>
+<summary><h2>Простые преобразования</h2></summary>
+На вход подается `DataFrame` из 3-х колонок дата рождения и смерти человека на **русском** языке в формате представленом ниже:
+
+|  | Имя             | Дата рождения  | Дата смерти      
+|--|-----------------|----------------|------------------
+|0 |Никола Тесла     |10 июля 1856 г. |7 января 1943 г.  
+|1 |Альберт Эйнштейн |14 марта 1879 г.|18 апреля 1955 г.  
+
+Необходимо вернуть исходную таблицу с добавленным в конце столбцом полных лет жизни.
+
+
+|  | Имя             | Дата рождения  | Дата смерти     | Полных лет
+|--|-----------------|----------------|-----------------|-----------
+|0 |Никола Тесла     |10 июля 1856 г. |7 января 1943 г. | 86        
+|1 |Альберт Эйнштейн |14 марта 1879 г.|18 апреля 1955 г.| 76        
+
+Формат даты единый, исключений нет, пробелы мужду элементами дат присутствуют, исключений (`Nan`) нету.
+
+P.S. Для обработки высокосных годов используйте модуль `dateutil.relativedelta`.
+[Solution:](./Отборочный/MTS-строки.py)
+```python
+import pandas as pd
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
+def rus_feature(df: pd.DataFrame) -> pd.DataFrame:
+    def parse_date(date_str):
+      dates = date_str.split()
+      months = {
+          'января': 1, 'февраля': 2, 'марта': 3,
+          'апреля': 4, 'мая': 5, 'июня': 6,
+          'июля': 7, 'августа': 8, 'сентября': 9,
+          'октября': 10, 'ноября': 11, 'декабря': 12
+      }
+      return datetime(
+          year=int(dates[2]), 
+          month=months[dates[1]], 
+          day=int(dates[0]) 
+      )
+      
+    df['Полных лет'] = df.apply(lambda row: relativedelta(parse_date(row['Дата смерти']), parse_date(row['Дата рождения'])).years, axis=1)
+    return df
+```
+</details>
 </details>
 <details>
 <summary><h1>IntroML</h1></summary>
