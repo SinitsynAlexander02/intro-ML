@@ -165,3 +165,14 @@ def ZOOtable(zoo: dict) -> pd.DataFrame:
   df = pd.DataFrame(zoo).T.apply(pd.to_numeric, errors='ignore').dropna(axis=1).reset_index().rename(columns={'index': 'Type'}).sort_values(by = 'Type').reset_index(drop=True)
   return df.reindex(sorted(df.columns), axis=1)
 ```
+<details>
+<summary>Условия задачи</summary>
+
+1. Условие 1
+2. Условие 2
+3. Условие 3
+
+```python
+# Пример кода
+print("Hello, World!")
+</details>
