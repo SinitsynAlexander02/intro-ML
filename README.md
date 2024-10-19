@@ -268,7 +268,7 @@ def men_stat(df: pd.DataFrame):
 
 Обратите внимание, что первые 2 столбца - это не колонки, а `MultiIndex`.
 
-### Sample 1
+### Sample
 #### Input:
 ```python
 df = pd.read_csv('data/titanic_train.csv', index_col='PassengerId')
