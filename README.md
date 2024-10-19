@@ -234,12 +234,12 @@ def rus_feature(df: pd.DataFrame) -> pd.DataFrame:
 <summary><h2>Характеристики</h2></summary>
 В этой задаче на вход подаются всем известные данные о погибших/выживших пассажирах на титанике. (Файл `titanik_train.csv` в папке data). 
 
-Верните среднее, медиану, максимальное и минимальное значение возраста **погибших** мужчин. Именно в данном порядке.
+Верните максимальное значение, минимальное значение, медиану, среднее, дисперсию возраста **погибших** мужчин. Именно в данном порядке.
 
 ### Sample
 #### Input:
 ```python
-df = pd.read_csv('titanic_train.csv', index_col='PassengerId')
+df = pd.read_csv('data/titanic_train.csv', index_col='PassengerId')
 ```
 
 [Solution:](./Отборочный/MTS-строки.py)
