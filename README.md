@@ -334,7 +334,7 @@ def fename_stat(df: pd.DataFrame) -> pd.DataFrame:
 <summary><h1>IntroML</h1></summary>
 <details>
 <summary><h2>Первое обучение</h2></summary>
-Простое как пробка задание. Обучите классификатор [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) на входных данных с гиперпараметрами:
+Простое как пробка задание. Обучите классификатор **RandomForestClassifier** (https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) на входных данных с гиперпараметрами:
 
 * `max_depth`= 6
 * `min_samples_split`= 3
