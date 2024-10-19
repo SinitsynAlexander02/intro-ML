@@ -83,6 +83,13 @@ import numpy as np
 def tensor_mask(X: np.ndarray, mask: np.ndarray) -> np.ndarray:
     return np.where(X == mask, 0, 1)
 ```
+ИЛИ
+```python
+import numpy as np
+
+def tensor_mask(X: np.ndarray, mask: np.ndarray) -> np.ndarray:
+    return np.bitwise_xor(X, mask)
+```
 </details>
 <details>
 <summary><h2>Сумма цифр в массиве</h2></summary>
