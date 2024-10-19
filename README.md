@@ -336,11 +336,11 @@ def fename_stat(df: pd.DataFrame) -> pd.DataFrame:
 <summary><h2>Первое обучение</h2></summary>
 Простое как пробка задание. Обучите классификатор [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) на входных данных с гиперпараметрами:
 
-* `max_depth`=$6$
-* `min_samples_split`=$3$
-* `min_samples_leaf`=$3$
-* `n_estimators`=$100$
-* `n_jobs`=$-1$
+* `max_depth`= 6
+* `min_samples_split`= 3
+* `min_samples_leaf`= 3
+* `n_estimators`= 100
+* `n_jobs`= -1
 
 И верните обученную модель.
 
