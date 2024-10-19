@@ -332,6 +332,36 @@ def fename_stat(df: pd.DataFrame) -> pd.DataFrame:
 </details>
 <details>
 <summary><h1>IntroML</h1></summary>
+<details>
+<summary><h2>Первое обучение</h2></summary>
+Простое как пробка задание. Обучите классификатор [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) на входных данных с гиперпараметрами:
+
+* `max_depth`=$6$
+* `min_samples_split`=$3$
+* `min_samples_leaf`=$3$
+* `n_estimators`=$100$
+* `n_jobs`=$-1$
+
+И верните обученную модель.
+
+Данные в X только численные, в y только 2 значения: 0 и 1.
+
+[Solution:](./02-IntroML/fit_rf.py)
+```python
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+
+def fit_rf(X: np.ndarray, y:np.ndarray) ->  RandomForestClassifier:
+  model = RandomForestClassifier(
+    max_depth=6,
+    min_samples_split=3,
+    min_samples_leaf=3,
+    n_estimators=100,
+    n_jobs=-1
+  )
+  return model.fit(X, y)
+```
+</details>
 </details>
 <details>
 <summary><h1>Linear</h1></summary>
