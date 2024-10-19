@@ -127,7 +127,8 @@ def replace_nans(X: np.ndarray) -> np.ndarray:
     Y[np.isnan(Y)] = np.take(m, np.where(np.isnan(Y))[1])
     return Y
 ```
-## Бухгалтерия зоопарка
+<details>
+<summary> ## Бухгалтерия зоопарка </summary>
 Вам на вход подается словарь, где ключ - это тип животного, а значение - словарь с признаками этого животного, где ключ - тип признака, а значение - значение признака (Типичный json проще говоря). Наименования признаков животного - всегда строки. Значения признаков - любой из типов pandas.
 
 Вам следует создать табличку, где по строчкам будут идти животные, а по колонкам - их признаки, которая удовлетворяет следующим условиям:
@@ -165,6 +166,7 @@ def ZOOtable(zoo: dict) -> pd.DataFrame:
   df = pd.DataFrame(zoo).T.apply(pd.to_numeric, errors='ignore').dropna(axis=1).reset_index().rename(columns={'index': 'Type'}).sort_values(by = 'Type').reset_index(drop=True)
   return df.reindex(sorted(df.columns), axis=1)
 ```
+</details>
 <details>
 <summary>Условия задачи</summary>
 
