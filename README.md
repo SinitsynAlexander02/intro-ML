@@ -106,6 +106,8 @@ array([ 8, 12, 4])
 ```
 [Solution:](./Отборочный/MTS-строки.py)
 ```python
+import numpy as np
+
 def num_sum(a: np.ndarray) -> np.ndarray:
   digits = np.array(list(''.join(np.char.mod('%d', a)))).astype(int)
   return np.add.reduceat(digits, np.r_[0, np.char.str_len(np.char.mod('%d', a)).cumsum()[:-1]])
