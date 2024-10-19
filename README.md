@@ -286,6 +286,49 @@ def age_stat(df: pd.DataFrame) -> pd.DataFrame:
     )
 ```
 </details>
+<details>
+<summary><h2>Популярные девушки</h2></summary>
+В этой задаче на вход подаются всем известные данные о погибших/выживших пассажирах на титанике. (Файл `titanik_train.csv` в папке data). 
+
+Выведите список имен незамужних женщин(`Miss`) отсортированный по популярности. 
+
+* В полном имени девушек **имя** - это **первое слово без скобок** после `Miss`.
+* Остальные строки не рассматриваем.
+* Девушки с одинаковой популярностью сортируются по имени в алфавитном порядке.
+
+**Слово/имя** - подстрока без пробелов.
+**Популярность** - количество таких имен в таблице.
+
+### Sample 1
+#### Input:
+```python
+data = pd.read_csv('data/titanic_train.csv', index_col='PassengerId')
+```
+#### Output:
+Вот начало данного списка. Заметьте, **названия колонок должны совпадать** 
+
+|  | Name | Popularity |
+|--|----|--------|
+|0 |Anna |9|
+|1 |Mary |9
+|2 |Margaret|6
+|3 |Elizabeth|5
+|4 |Alice |4
+|5 |Bertha |4
+|6 |Ellen |4
+|7 |Helen |4
+
+[Solution:](./Отборочный/MTS-строки.py)
+```python
+import pandas as pd
+
+def fename_stat(df: pd.DataFrame) -> pd.DataFrame:
+  miss_names = df[df['Name'].str.contains('Miss')]['Name'].str.extract(r'Miss\.\s+([^\s\(]+)')[0]
+  popularity = miss_names.value_counts().reset_index()
+  popularity.columns = ['Name', 'Popularity']
+  return popularity.sort_values(by=['Popularity', 'Name'], ascending=[False, True]).reset_index(drop=True)
+```
+</details>
 </details>
 <details>
 <summary><h1>IntroML</h1></summary>
