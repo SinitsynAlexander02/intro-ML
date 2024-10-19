@@ -16,7 +16,7 @@ a = 7.2
 ```python
 7
 ```
-[Solution:](./Отборочный/MTS-строки.py)
+[Solution:](./01-Analysis/nearest_value.py)
 ```python
 import numpy as np
 
@@ -37,7 +37,7 @@ A = np.array([43, 66, 34, 55, 78, 105, 2])
 ```python
 array([ 43,   2,  34,  55,  66, 105,  78])
 ```
-[Solution:](./Отборочный/MTS-строки.py)
+[Solution:](./01-Analysis/sort_evens.py)
 ```python
 import numpy as np
 
@@ -77,7 +77,7 @@ array([[[0, 1, 1],
         [0, 0, 1],
         [0, 0, 1]]])
 ```
-[Solution:](./Отборочный/MTS-строки.py)
+[Solution:](./01-Analysis/tensor_mask.py)
 ```python
 import numpy as np
 
@@ -105,7 +105,7 @@ a = np.array([1241, 354, 121])
 ```python
 array([ 8, 12, 4])
 ```
-[Solution:](./Отборочный/MTS-строки.py)
+[Solution:](./01-Analysis/num_sum.py)
 ```python
 import numpy as np
 
@@ -133,7 +133,7 @@ array([[0. , 4. , 8. ],
        [0. , 4.5, 8. ],
        [0. , 5. , 8. ]])
 ```
-[Solution:](./Отборочный/MTS-строки.py)
+[Solution:](./01-Analysis/replace_nans.py)
 ```python
 import numpy as np
 
@@ -175,7 +175,7 @@ ZOO = {
 |0 | cat |  False | 50.0 |
 |1 | dog |  True  | 30.5  |
 
-[Solution:](./Отборочный/MTS-строки.py)
+[Solution:](./01-Analysis/ZOOtable.py)
 ```python
 import pandas as pd
 
@@ -205,7 +205,7 @@ def ZOOtable(zoo: dict) -> pd.DataFrame:
 
 P.S. Для обработки высокосных годов используйте модуль `dateutil.relativedelta`.
 
-[Solution:](./Отборочный/MTS-строки.py)
+[Solution:](./01-Analysis/rus_feature.py)
 ```python
 import pandas as pd
 from datetime import datetime
@@ -242,7 +242,7 @@ def rus_feature(df: pd.DataFrame) -> pd.DataFrame:
 df = pd.read_csv('data/titanic_train.csv', index_col='PassengerId')
 ```
 
-[Solution:](./Отборочный/MTS-строки.py)
+[Solution:](./01-Analysis/men_stat.py)
 ```python
 import pandas as pd
 
@@ -274,7 +274,7 @@ def men_stat(df: pd.DataFrame):
 df = pd.read_csv('data/titanic_train.csv', index_col='PassengerId')
 ```
 
-[Solution:](./Отборочный/MTS-строки.py)
+[Solution:](./01-Analysis/age_stat.py)
 ```python
 import pandas as pd
 
@@ -318,7 +318,7 @@ data = pd.read_csv('data/titanic_train.csv', index_col='PassengerId')
 |6 |Ellen |4
 |7 |Helen |4
 
-[Solution:](./Отборочный/MTS-строки.py)
+[Solution:](./01-Analysis/fename_stat.py)
 ```python
 import pandas as pd
 
