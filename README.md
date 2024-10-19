@@ -230,6 +230,27 @@ def rus_feature(df: pd.DataFrame) -> pd.DataFrame:
     return df
 ```
 </details>
+<details>
+<summary><h2>Характеристики</h2></summary>
+В этой задаче на вход подаются всем известные данные о погибших/выживших пассажирах на титанике. (Файл `titanik_train.csv` в [папке data](https://github.com/samstikhin/ml2021/tree/master/01-Analysis/data)). 
+
+Верните среднее, медиану, максимальное и минимальное значение возраста **погибших** мужчин. Именно в данном порядке.
+
+### Sample
+#### Input:
+```python
+df = pd.read_csv('titanic_train.csv', index_col='PassengerId')
+```
+
+[Solution:](./Отборочный/MTS-строки.py)
+```python
+import pandas as pd
+
+def men_stat(df: pd.DataFrame):
+    ages = df[(df['Sex'] == 'male') & (df['Survived'] == 0)]['Age'].dropna()
+    return ages.max(), ages.min(), ages.median(), ages.mean(), ages.var()
+```
+</details>
 </details>
 <details>
 <summary><h1>IntroML</h1></summary>
