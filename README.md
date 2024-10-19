@@ -1,4 +1,5 @@
-# Analysis
+<details>
+<summary><h1>Analysis</h1></summary>
 <details>
 <summary><h2>Ближайший элемент</h2></summary>
 Реализуйте функцию, принимающую на вход непустой тензор (может быть многомерным) $X$ и некоторое число $a$ и возвращающую ближайший к числу элемент тензора. Если ближайших несколько - выведите минимальный из ближайших. (Вернуть нужно само число, а не индекс числа!)
@@ -183,4 +184,5 @@ def ZOOtable(zoo: dict) -> pd.DataFrame:
   df = pd.DataFrame(zoo).T.apply(pd.to_numeric, errors='ignore').dropna(axis=1).reset_index().rename(columns={'index': 'Type'}).sort_values(by = 'Type').reset_index(drop=True)
   return df.reindex(sorted(df.columns), axis=1)
 ```
+</details>
 </details>
