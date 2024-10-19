@@ -177,7 +177,6 @@ ZOO = {
 
 [Solution:](./Отборочный/MTS-строки.py)
 ```python
-import numpy as np
 import pandas as pd
 
 def ZOOtable(zoo: dict) -> pd.DataFrame:
