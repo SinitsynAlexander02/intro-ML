@@ -80,7 +80,8 @@ import numpy as np
 def tensor_mask(X: np.ndarray, mask: np.ndarray) -> np.ndarray:
     return np.where(X == mask, 0, 1)
 ```
-## Сумма цифр в массиве
+<details>
+<summary><h2>Сумма цифр в массиве</h2></summary>
 На вход подается `np.ndarray` c натуральными числами. Надо получить массив сумм цифр в этих числах.
 
 ### Sample
@@ -98,7 +99,9 @@ def num_sum(a: np.ndarray) -> np.ndarray:
   digits = np.array(list(''.join(np.char.mod('%d', a)))).astype(int)
   return np.add.reduceat(digits, np.r_[0, np.char.str_len(np.char.mod('%d', a)).cumsum()[:-1]])
 ```
-## Чистка NaN-ов
+</details>
+<details>
+<summary><h2>Чистка NaN-ов</h2></summary>
 Одна из важных проблем данных - пустые значения. В *numpy* и *pandas* они обычно объявляются специальным типом ```np.nan```. В реальных задачах нам часто нужно что-то сделать с этими значениями. Например заменить на 0, среднее или медиану.
 
 Реализуйте функцию, которая во входной вещественной матрице ```X``` находит все значения ```nan``` и заменяет их на **медиану** остальных элементов столбца. Если все элементы столбца матрицы ```nan```, то заполняем столбец нулями.
@@ -127,6 +130,7 @@ def replace_nans(X: np.ndarray) -> np.ndarray:
     Y[np.isnan(Y)] = np.take(m, np.where(np.isnan(Y))[1])
     return Y
 ```
+</details>
 <details>
 <summary><h2>Бухгалтерия зоопарка</h2></summary>
 Вам на вход подается словарь, где ключ - это тип животного, а значение - словарь с признаками этого животного, где ключ - тип признака, а значение - значение признака (Типичный json проще говоря). Наименования признаков животного - всегда строки. Значения признаков - любой из типов pandas.
@@ -166,15 +170,4 @@ def ZOOtable(zoo: dict) -> pd.DataFrame:
   df = pd.DataFrame(zoo).T.apply(pd.to_numeric, errors='ignore').dropna(axis=1).reset_index().rename(columns={'index': 'Type'}).sort_values(by = 'Type').reset_index(drop=True)
   return df.reindex(sorted(df.columns), axis=1)
 ```
-</details>
-<details>
-<summary>Условия задачи</summary>
-
-1. Условие 1
-2. Условие 2
-3. Условие 3
-
-```python
-# Пример кода
-print("Hello, World!")
 </details>
