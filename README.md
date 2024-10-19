@@ -299,7 +299,7 @@ def age_stat(df: pd.DataFrame) -> pd.DataFrame:
 **Слово/имя** - подстрока без пробелов.
 **Популярность** - количество таких имен в таблице.
 
-### Sample 1
+### Sample
 #### Input:
 ```python
 data = pd.read_csv('data/titanic_train.csv', index_col='PassengerId')
