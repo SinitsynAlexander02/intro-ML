@@ -362,6 +362,36 @@ def fit_rf(X: np.ndarray, y:np.ndarray) ->  RandomForestClassifier:
   return model.fit(X, y)
 ```
 </details>
+<details>
+<summary><h2>Первая классификация</h2></summary>
+В папке data вы можете найти данные для бинарной классификации (файл `diabets_train.csv` и `diabets_test.csv`). $Y$ в этих данных выступает столбик `Outcome`, в качестве $X$ - все остальное. 
+
+Вам необходимо предсказать $y_{test}$ такой, что $accuracy > 0.75$ <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html">доля правильных ответов</a>. Вы можете делать что угодно, чтобы получить результат:
+
+* использовать любой классификатор с любыми гиперпараметрами
+* как угодно изменять данные 
+
+Вернуть в этом случае нужно не модель, а результат - одномерный массив данных $y_{pred}$ (предсказание $y_{test}$).
+
+P.S. Можете узнать больше о данных по <a href="https://www.kaggle.com/uciml/pima-indians-diabetes-database">ссылке</a>. Мы произвольным образом разбили данные в соотношении 4:1.
+
+[Solution:](./02-IntroML/classification.py)
+```python
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+
+def classification(X_train: np.ndarray, y_train: np.ndarray, X_test: np.ndarray) -> np.ndarray:
+    model = RandomForestClassifier(
+      max_depth=6,
+      min_samples_split=3,
+      min_samples_leaf=3,
+      n_estimators=100,
+      n_jobs=-1
+    )
+    model.fit(X_train, y_train)
+    return model.predict(X_test)
+```
+</details>
 </details>
 <details>
 <summary><h1>Linear</h1></summary>
