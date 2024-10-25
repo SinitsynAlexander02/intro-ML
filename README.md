@@ -366,7 +366,7 @@ def fit_rf(X: np.ndarray, y:np.ndarray) ->  RandomForestClassifier:
 <summary><h2>Первая классификация</h2></summary>
 В папке data вы можете найти данные для бинарной классификации (файл `diabets_train.csv` и `diabets_test.csv`). $Y$ в этих данных выступает столбик `Outcome`, в качестве $X$ - все остальное. 
 
-Вам необходимо предсказать $y_{test}$ такой, что $accuracy > 0.75$ <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html">доля правильных ответов</a>. Вы можете делать что угодно, чтобы получить результат:
+Вам необходимо предсказать $y_{test}$ такой, что $accuracy > 0.75$ <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html">(доля правильных ответов)</a>. Вы можете делать что угодно, чтобы получить результат:
 
 * использовать любой классификатор с любыми гиперпараметрами
 * как угодно изменять данные 
@@ -391,6 +391,14 @@ def classification(X_train: np.ndarray, y_train: np.ndarray, X_test: np.ndarray)
     model.fit(X_train, y_train)
     return model.predict(X_test)
 ```
+</details>
+<details>
+<summary><h2>Переобучение</h2></summary>
+В папке data вы можете найти данные для бинарной классификации (файлы `overfit_trian.csv`, `overfit_test.csv`). Вам на вход подается тренировочная и тестовая выборки из файла. 
+
+Верните такую обученную модель, которая на тренировочной выборке дает $accuracy > 0.97$, а на тестовом $accuracy < 0.7$.
+
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html">$accuracy$</a> - доля правильных ответов.
 </details>
 </details>
 <details>
