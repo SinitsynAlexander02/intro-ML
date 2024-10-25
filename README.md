@@ -398,7 +398,17 @@ def classification(X_train: np.ndarray, y_train: np.ndarray, X_test: np.ndarray)
 
 Верните такую обученную модель, которая на тренировочной выборке дает $accuracy > 0.97$, а на тестовом $accuracy < 0.7$.
 
-<a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html">$accuracy$</a> - доля правильных ответов.
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html">accuracy</a> - доля правильных ответов.
+
+[Solution:](./02-IntroML/overfitting.py)
+```python
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+
+def overfitting(X_train: np.array, y_train: np.array, X_test: np.array, y_test: np.array):
+    model = RandomForestClassifier(random_state=42)
+    return model.fit(X_train, y_train)
+```
 </details>
 </details>
 <details>
