@@ -480,6 +480,70 @@ class KNN:
         return np.array([self._predict_proba(x) for x in X])
 ```
 </details>
+<details>
+<summary><h2>Мой KNN</h2></summary>
+Теперь вам предстоит реализовать свою простейшую линейную регрессию по функционалу $MSE$.
+
+Линейная регрессия выглядит следующим образом:
+$$a(x) = w_1x + w_0$$
+
+Необходимо найти такие $w_0$ и $w_1$, при которых минимизируется значение
+
+$$MSE(X,Y) = \frac{1}{n}\sum_{i=1}^{n}(a(x_i) - y_i)^2$$
+
+Выведите формулы для $w_0$ и $w_1$ аналитически и реализуйте следующие методы класса 
+
+* `init` - начальная инициализация
+* `fit` - обучение классификатора
+* `predict` - предсказание для новых объектов
+
+После обучения у модели должен присутствовать атрибут `model.coef_` из которого можно получить коэффициенты регрессии в порядке: $w_1$, $w_0$.
+
+Гиперпараметры отсутствуют.
+
+На вход будут подаваться два массива $X\in \mathbb{R}^{n}$ и $Y \in \mathbb{R}^{n}$.
+
+Метрика - Евклидова.
+
+### Sample 1
+#### Input:
+```python
+X_train = np.array([[1], [2]])
+y_train = np.array([1, 2])
+
+model = LinReg().fit(X_train, y_train)
+y_pred = model.predict(np.array([[3],[4]]))
+
+```
+#### Output:
+```python
+y_pred = np.array([3, 4])
+model.coef_ = np.array([1., 0.])
+```
+
+[Solution:](./02-IntroML/LinReg.py)
+```python
+import numpy as np
+
+class LinReg():
+    def __init__(self):
+        self.w0 = None
+        self.w1 = None
+        self.coef_ = None 
+
+    def fit(self, X_train: np.array, y_train: np.array):
+        n = len(y_train)
+        xm = np.mean(X_train)
+        ym = np.mean(y_train)
+        self.w1 = np.sum((X_train.flatten() - xm) * (y_train - ym)) / np.sum((X_train.flatten() - xm) ** 2)
+        self.w0 = ym - self.w1 * xm
+        self.coef_ = np.array([self.w1, self.w0])
+        return self
+
+    def predict(self, X_test: np.array):
+        return self.w1 * X_test.flatten() + self.w0
+```
+</details>
 </details>
 <details>
 <summary><h1>Linear</h1></summary>
