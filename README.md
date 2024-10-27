@@ -410,6 +410,76 @@ def overfitting(X_train: np.array, y_train: np.array, X_test: np.array, y_test: 
     return model.fit(X_train, y_train)
 ```
 </details>
+<details>
+<summary><h2>Мой KNN</h2></summary>
+Ваша задача реализовать свой простой KNNClassifier для бинарных данных. Вам нужно реализовать 3 метода:
+
+* `init` - начальная инициализация
+* `fit` - обучение классификатора
+* `predict` - предсказание для новых объектов
+* `predict_proba` - предсказание вероятностей новых объектов
+
+У нашего классификатора будет лишь один гиперпараметр - количество соседей $k$. Во избежании тонкостей: $k$ - нечетное.
+
+На вход будет подаваться выборка объектов $X$, у которых ровно 2 числовых признака. $y$ - результат бинарной классификации $0$ или $1$.
+
+Метрика ближайших элементов - Эвклидова.
+
+Напоминание: $y$ - одномерный массив, $X$ - двумерный массив, по $0$-ой оси которой расположены объекты.
+
+### Sample 1
+#### Input:
+```python
+X_train = np.array([[1, 1], [1, -1], [-1,-1], [-1, 1]])
+y_train = np.array([1, 1, 0, 0])
+
+model = KNN(k=3).fit(X_train, y_train)
+y_pred = model.predict(np.array([[0.5, 0.5], [ -0.5,  -0.5]]))
+y_prob = model.predict_proba(np.array([[0.5, 0.5], [-0.5, -0.5]]))
+```
+#### Output:
+```python
+y_pred = np.array([1., 0.])
+y_prob = np.array([[0.33, 0.667],
+                   [0.667, 0.33]])
+```
+
+[Solution:](./02-IntroML/KNN.py)
+```python
+import numpy as np
+
+class KNN:
+    def __init__(self, k=3):
+        self.k = k
+
+    def fit(self, X, y):
+        self.X_train = X
+        self.y_train = y
+        return self
+
+    def _predict(self, x):
+        d = np.linalg.norm(self.X_train - x, axis=1)
+        k_i = np.argsort(d)[:self.k]
+        k_nearest_i = self.y_train[k_i]
+        unique, cnt = np.unique(k_nearest_i, return_counts=True)
+        return unique[np.argmax(cnt)]
+
+    def predict(self, X):
+        return np.array([self._predict(x) for x in X])
+
+    def _predict_proba(self, x):
+        d = np.linalg.norm(self.X_train - x, axis=1)
+        k_i = np.argsort(d)[:self.k]
+        k_nearest_i = self.y_train[k_i]
+        p = np.zeros(2)
+        for i in np.unique(self.y_train):
+            p[int(i)] = np.sum(k_nearest_i == i) / self.k
+        return p
+
+    def predict_proba(self, X):
+        return np.array([self._predict_proba(x) for x in X])
+```
+</details>
 </details>
 <details>
 <summary><h1>Linear</h1></summary>
